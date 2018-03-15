@@ -11,12 +11,8 @@ class App extends Component {
   this.state = {jobs: []}
 }
 
-  componentWillMount() {
-    this.findJobs()
-  }
-
   findJobs() {
-    fetch('./listings.json', {
+    fetch('/listings.json', {
       headers : { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -26,38 +22,34 @@ class App extends Component {
     .then(jobs => this.setState({jobs}))
   }
 
+  componentDidMount() {
+    this.findJobs()
+  }
+
   makeJob = (e) => {
     e.preventDefault()
     let data = new FormData(e.target)
     let {jobs} = this.state
-    console.log(jobs)
     jobs.unshift({
-      title: data.get('title'),
-      pay: data.get('pay'),
-      description: data.get('description'),
+      title: data.title,
+      pay: data.pay,
+      description: data.description,
       interested: []
     })
-    console.log({jobs})
     this.setState({jobs})
     e.target.reset()
   }
 
   render() {
     return (
-      <main>
+      <body>
         <Header />
-        <section id="job-list">
-          <h2>Job Listings</h2>
-          <ul id='job-listings'>
+          <main>
             <Joblist jobs={this.state.jobs} />
-          </ul>
-        </section>
-        <section id='side'>
-          <h3>Add a Job</h3>
           <Jobform makeJob={this.makeJob} />
-        </section>
+          </main>
         <Footer />
-      </main>
+      </body>
     )
   }
 }

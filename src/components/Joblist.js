@@ -3,7 +3,9 @@ import React from 'react';
 export default function Joblist({ jobs }) {
     if (!jobs || jobs.length < 1) 
     return <h4>No jobs</h4>
-    return <ul id='job-listings'>
+    return <section id='job-list'>
+        <h2>Job Listings</h2>
+        <ul id='job-listings'>
       {jobs.map(job => <li key={job.id}>
         <h4>{job.title}</h4>
         <small>{job.pay}</small>
@@ -12,4 +14,5 @@ export default function Joblist({ jobs }) {
       </li>
     )}
     </ul>
+    </section>
   }
