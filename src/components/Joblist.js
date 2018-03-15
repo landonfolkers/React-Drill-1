@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default function Joblist({ jobs }) {
-    if (!jobs || jobs.length < 1) 
-    return <h4>No jobs</h4>
     return <section id='job-list'>
         <h2>Job Listings</h2>
         <ul id='job-listings'>
