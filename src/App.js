@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import Header from './components/Header';
-import Joblist from './components/Joblist';
-import Jobform from './components/Jobform';
-import Footer from './components/Footer';
+import React, { Component } from 'react'
+import './App.css'
+import Header from './components/Header'
+import Joblist from './components/Joblist'
+import Jobform from './components/Jobform'
+import Footer from './components/Footer'
 
 class App extends Component {
   constructor(props) {
