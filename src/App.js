@@ -26,30 +26,22 @@ class App extends Component {
     this.findJobs()
   }
 
-  makeJob = (e) => {
-    e.preventDefault()
-    let data = new FormData(e.target)
-    let {jobs} = this.state
-    jobs.unshift({
-      title: data.title,
-      pay: data.pay,
-      description: data.description,
-      interested: []
-    })
-    this.setState({jobs})
-    e.target.reset()
+  makeJob = (job) => {
+    const {jobs} = this.state;
+    jobs.unshift(job);
+    return this.setState({jobs});
   }
 
   render() {
     return (
-      <body>
+      <section id="body">
         <Header />
           <main>
             <Joblist jobs={this.state.jobs} />
           <Jobform makeJob={this.makeJob} />
           </main>
         <Footer />
-      </body>
+      </section>
     )
   }
 }
