@@ -7,19 +7,19 @@ import Footer from './components/Footer'
 
 class App extends Component {
   constructor(props) {
-  super(props)
-  this.state = {jobs: []}
-}
+    super(props)
+    this.state = { jobs: [] }
+  }
 
   findJobs() {
     fetch('/listings.json', {
-      headers : { 
+      headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      } 
+      }
     })
-    .then(response => response.json())
-    .then(jobs => this.setState({jobs}))
+      .then(response => response.json())
+      .then(jobs => this.setState({ jobs }))
   }
 
   componentDidMount() {
@@ -27,19 +27,19 @@ class App extends Component {
   }
 
   makeJob = (job) => {
-    const {jobs} = this.state;
-    jobs.unshift(job);
-    return this.setState({jobs});
+    const { jobs } = this.state
+    jobs.unshift(job)
+    return this.setState({ jobs })
   }
 
   render() {
     return (
       <section id="body">
         <Header />
-          <main>
-            <Joblist jobs={this.state.jobs} />
+        <main>
+          <Joblist jobs={this.state.jobs} />
           <Jobform makeJob={this.makeJob} />
-          </main>
+        </main>
         <Footer />
       </section>
     )
